@@ -2,10 +2,10 @@
 the_ROM_image:
 {
 	[fsbl_config]a53_x64
-	[bootloader]/home/karak/xproject/fmc133v_v10_zu7_core/project/images/linux/zynqmp_fsbl.elf
-	[pmufw_image]/home/karak/xproject/fmc133v_v10_zu7_core/project/images/linux/pmufw.elf
-	[destination_cpu = a53-0, exception_level = el-3, trustzone]/home/karak/xproject/fmc133v_v10_zu7_core/project/images/linux/bl31.elf
-	[destination_device = pl]/home/karak/xproject/fmc133v_v10_zu7_core/project/images/linux/fmc133v_v10_zu7_DDC.bit
-	[destination_cpu = a53-0, exception_level = el-2]/home/karak/xproject/fmc133v_v10_zu7_core/project/images/linux/u-boot.elf
-	[destination_cpu = a53-0]/home/karak/xproject/fmc133v_v10_zu7_core/bin/image.ub
+	[bootloader]zynqmp_fsbl.elf
+	[pmufw_image]pmufw.elf
+	[destination_cpu = a53-0, exception_level = el-3, trustzone]bl31.elf
+	[destination_device = pl]fmc133v_v10_zu7_DDC.bit
+	[destination_cpu = a53-0, exception_level = el-2]u-boot.elf
+	[destination_cpu = a53-0]image.ub
 }
