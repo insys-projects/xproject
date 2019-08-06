@@ -1,0 +1,12 @@
+fdt_high=0x10000000
+serverip=192.168.0.102
+nfsserver=192.168.0.102
+gatewayip=192.168.0.1
+netmask=255.255.255.0
+ipaddr=192.168.0.252
+hostname=fmc130e
+bootargs_nfs=console=ttyPS0,115200 erlyprintk root=/dev/nfs nfsroot=192.168.0.102:/tftpboot/nfsroot-fmc130e, nolock rw rootwait ip=dhcp;
+bootargs_sd=console=ttyPS0,115200 earlyprintk root=/dev/mmcblk0p2 rootfstype=ext4 nolock rw rootwait ip=192.168.0.170::192.168.0.1:255.255.255.0:fmc130e:eth0:off";
+bootargs=${bootargs_sd}
+start_fmc130e=echo "Boot from uEnv.txt on SD..."; fatload mmc 0 0x3000000 image.ub; bootm 0x3000000;
+bootcmd=run start_fmc130e
