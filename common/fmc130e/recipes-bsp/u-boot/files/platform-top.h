@@ -122,7 +122,7 @@
 	"loadimg=setenv fname image.ub.sd; run loadfile;\0" \ 
 	"loaddtb=fatload mmc 0:1 ${dtbaddr} ${dtb_img};\0" \ 
 	"loadimgr=setenv fname image.ub.ramfs; run loadfile;\0" \ 
-	"start=run loadbit; run loadimg; run loaddtb; bootm ${fileaddr} - ${dtbaddr};\0" \ 
-	"startr=run loadbit; run loadimgr;  run loaddtb; bootm ${fileaddr} - ${dtbaddr};\0" \ 
+	"start=run loadbit; run loadimg; run loaddtb; bootm 0x10000000 - 0x20000000;\0" \ 
+	"startr=run loadbit; run loadimgr;  run loaddtb; bootm 0x10000000 - 0x20000000;\0" \ 
 	"bootcmd=run sd_on; run start;\0" \ 
 ""
