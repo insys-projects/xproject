@@ -100,12 +100,14 @@
 	"test_img=setenv var \"if test ${filesize} -gt ${psize}\\; then run fault\\; else run ${installcmd}\\; fi\"; run var; setenv var\0" \ 
 	"netboot=tftpboot ${netstart} ${kernel_img} && bootm\0" \ 
 	"default_bootcmd=run uenvboot; run cp_kernel2ram && bootm ${netstart}\0" \ 
-	"sel_pin=48;\0" \ 
+	"fileaddr=0x10000000\0" \ 
+	"dtbaddr=0x20000000\0" \ 
+	"sel_pin=48\0" \ 
 	"sd_on=gpio clear ${sel_pin}; mmc rescan;\0" \ 
 	"emmc_on=gpio set ${sel_pin}; mmc rescan;\0" \ 
-	"burnspi=run sd_on; fatload mmc 0:1 0x10000000 qspi.bin; sf probe 0; sf erase 0 200000; sf write 0x10000000 0x0 ${filesize};\0" \ 
-	"loadfile=fatload mmc 0:1 0x10000000 ${fname};\0" \ 
-	"savefile=fatwrite mmc 0:1 0x10000000 ${fname} ${filesize};\0" \ 
+	"burnspi=run sd_on; fatload mmc 0:1 ${fileaddr} qspi_zynq.bin; sf probe 0; sf erase 0 200000; sf write ${fileaddr} 0x0 ${filesize};\0" \ 
+	"loadfile=fatload mmc 0:1 ${fileaddr} ${fname};\0" \ 
+	"savefile=fatwrite mmc 0:1 ${fileaddr} ${fname} ${filesize};\0" \ 
 	"copyfile=run sd_on; run loadfile; run emmc_on; run savefile; run sd_on;\0" \ 
 	"copyldr=setenv fname BOOT.BIN; run copyfile;\0" \ 
 	"copydtb=setenv fname system.dtb; run copyfile;\0" \ 
@@ -118,8 +120,9 @@
 	"copyall=run copybit; copyimg; run copyimgr; run copyfs; run copyldr; run copydtb;\0" \ 
 	"loadbit=setenv fname system.bit.bin; run loadfile; fpga load 0 0x10000000 ${filesize}\0" \ 
 	"loadimg=setenv fname image.ub.sd; run loadfile;\0" \ 
+	"loaddtb=fatload mmc 0:1 ${dtbaddr} ${dtb_img};\0" \ 
 	"loadimgr=setenv fname image.ub.ramfs; run loadfile;\0" \ 
-	"start=run loadbit; run loadimg; bootm 0x10000000;\0" \ 
-	"startr=run loadbit; run loadimgr; bootm 0x10000000;\0" \ 
+	"start=run loadbit; run loadimg; run loaddtb; bootm ${fileaddr} - ${dtbaddr};\0" \ 
+	"startr=run loadbit; run loadimgr;  run loaddtb; bootm ${fileaddr} - ${dtbaddr};\0" \ 
 	"bootcmd=run sd_on; run start;\0" \ 
 ""
