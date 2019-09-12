@@ -1,0 +1,32 @@
+/dts-v1/;
+
+/ {
+	description = "U-Boot fitImage for plnx_arm kernel";
+	#address-cells = <1>;
+
+	images {
+		kernel@0 {
+			description = "Linux Kernel";
+			data = /incbin/("zImage");
+			type = "kernel";
+			arch = "arm";
+			os = "linux";
+			compression = "none";
+			load = <0x8000>;
+			entry = <0x8000>;
+			hash@1 {
+				algo = "sha1";
+			};
+		};
+	};
+	configurations {
+		default = "conf@0";
+		conf@0 {
+			description = "Boot Linux kernel without FDT blob and without ramdisk";
+			kernel = "kernel@0";
+			hash@1 {
+				algo = "sha1";
+			};
+		};
+	};
+};
