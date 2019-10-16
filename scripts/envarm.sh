@@ -54,7 +54,6 @@ fi
 if [ ! -d ${KERNELDIR} ];
 then
     echo "KERNELDIR does not exist! Build petalinux project before, do: ./makeproject.sh $1"
-    return -1;
 fi
 
 export INSTALL_MOD_PATH=${HOME}/targetfs-${BOARD}
