@@ -8,6 +8,10 @@ if [[ ${PETALINUX_VER} = "2018.2" ]]
 then
 FPGABIN=system.bit
 fi
+if [[ ${PETALINUX_VER} = "2018.3" ]]
+then
+FPGABIN=system.bit
+fi
 if [[ ${PETALINUX_VER} = "2019.1" ]]
 then
 FPGABIN=system.bit
