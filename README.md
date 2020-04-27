@@ -25,3 +25,13 @@ source /opt/xilinx/petalinux/settings.sh
 
 cd ~/xproject/scripts
 source envarm.sh ../fmc130e_v12_z045_fmctest
+
+5. Для выбора драйвера, работающего с субмодулями перед сборкой отредактирвать файл
+   project-spec/meta-user/recipes-bsp/device-tree/files/fmc130e.dtsi
+   Для использования AXI-DMA раскомментировать строку: /include/ "zdev.dtsi"
+   Для использования тетрад раскомментировать строку:  /include/ "axidev.dtsi"
+   вторую строку закомментировать.
+
+6. При использовании AXO-DMA необходимо в конфигруации ядра Device Drivers -> DMA Engine Support 
+   отключить поддержку драйвера AXI-DMA: < > Xilinx AXI DMAS Engine.
+

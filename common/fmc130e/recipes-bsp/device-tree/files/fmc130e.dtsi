@@ -1,3 +1,6 @@
+/* /include/ "zdev.dtsi" */
+/include/ "axidev.dtsi"
+
 / {
         model = "fmc130e";
         aliases {
@@ -32,16 +35,6 @@
                 };
         };
 
-        zdev_instance: zdev@0x40000000 {
-            status = "okay";
-            compatible = "insys,lzynq";
-            #address-cells = <1>;
-            #size-cells = <1>;
-            reg = <0x40000000 0x80000 0x40080000 0x80000>;
-            interrupt-parent = <&intc>;
-            interrupts = <1 45 4>, <1 46 4>, <1 47 4>, <1 48 4>; // Actually - 61, 62, 63, 64. (start from 45 = 61-16)
-        };
-
         usb_phy0: phy0@e0002000 {
                 compatible = "ulpi-phy";
                 #phy-cells = <0>;
@@ -69,6 +62,8 @@
 &gem0 {
     phy-handle = <&phy0>;
     ps7_ethernet_0_mdio: mdio {
+        #address-cells = <0x1>;
+        #size-cells = <0x0>;
         phy0: phy@0 {
             compatible = "marvell,88e1510";
             device_type = "ethernet-phy";

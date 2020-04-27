@@ -1,0 +1,9 @@
+/ {
+    axidev@0 {
+           status = "okay";
+           compatible = "insys,axidrv";
+           dmas = <&axi_dma_0 0x0 &axi_dma_0 0x1>;
+           dma-names = "tx_channel", "rx_channel";
+           node-names = "fmc_carrier_support", "trd_axi_fm416x500md", "trd_ddr3_dac_v1", "trd_main_m3", "axis_switch";
+     };
+};
