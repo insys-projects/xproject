@@ -1,14 +1,16 @@
 
 PWD=`pwd`
-PRJ_ROOT=${PWD}/$1/project
+#PRJ_ROOT=${PWD}/$1/project
+PRJ_ROOT=$1
 
-source /opt/xilinx/sdk/settings64.sh
+#source /opt/xilinx/sdk/settings64.sh
+source /opt/xilinx/petalinux/settings.sh
 
-export INSYS_BOARD=fmc133v
+export INSYS_BOARD=fmc138m
 export BOARD=${INSYS_BOARD}
 export TOOLCHAIN_PATH=/opt/xilinx/sdk/aarch64/lin/aarch64-linux/bin
+#export TOOLCHAIN_PATH=/opt/xilinx/petalinux/tools/linux-i386/aarch64-linux-gnu/bin
 export TARGET_SYS=aarch64-linux-gnu
-
 
 export CC=${TARGET_SYS}-gcc
 export CPP="${TARGET_SYS}-gcc"
@@ -23,19 +25,12 @@ export OBJDUMP=${TARGET_SYS}-objdump
 export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
 export PATH=${TOOLCHAIN_PATH}:${PATH}
 export CROSS_COMPILE=${TARGET_SYS}-
-export ARCH=arm
+export ARCH=arm64
 
-if [[ ${PETALINUX_VER} = "2017.4" ]]
+if [[ ${PETALINUX_VER} = "2018.3" ]]
 then
-BUILD_KERNEL_DIR=build/tmp/work/plnx_arm-xilinx-linux-gnueabi/linux-xlnx
-BUILD_KERNEL_VER=4.9-xilinx-v2017.4+gitAUTOINC+b450e900fd-r0/linux-plnx_arm-standard-build
-export KERNELDIR=${PRJ_ROOT}/${BUILD_KERNEL_DIR}/${BUILD_KERNEL_VER}
-fi
-
-if [[ ${PETALINUX_VER} = "2018.2" ]]
-then
-BUILD_KERNEL_DIR=build/tmp/work/plnx_zynq7-xilinx-linux-gnueabi/linux-xlnx
-BUILD_KERNEL_VER=4.14-xilinx-v2018.2+gitAUTOINC+ad4cd988ba-r0/linux-plnx_zynq7-standard-build
+BUILD_KERNEL_DIR=build/tmp/work/plnx_zynqmp-xilinx-linux/linux-xlnx
+BUILD_KERNEL_VER=4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120-r0/linux-plnx_zynqmp-standard-build
 export KERNELDIR=${PRJ_ROOT}/${BUILD_KERNEL_DIR}/${BUILD_KERNEL_VER}
 fi
 
@@ -54,8 +49,7 @@ fi
 
 if [ ! -d ${KERNELDIR} ];
 then
-    echo "KERNELDIR does not exist! Build petalinux project before."
-    return -1;
+    echo "KERNELDIR does not exist! Build petalinux project before, do: ./makeproject_mp.sh $1"
 fi
 
 export INSTALL_MOD_PATH=${HOME}/targetfs-${BOARD}

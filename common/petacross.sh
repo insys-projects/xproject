@@ -38,6 +38,13 @@ BUILD_KERNEL_VER=4.14-xilinx-v2018.2+gitAUTOINC+ad4cd988ba-r0/linux-plnx_zynq7-s
 export KERNELDIR=${PWD}/project/${BUILD_KERNEL_DIR}/${BUILD_KERNEL_VER}
 fi
 
+if [[ ${PETALINUX_VER} = "2018.3" ]]
+then
+BUILD_KERNEL_DIR=build/tmp/work/plnx_zynq7-xilinx-linux-gnueabi/linux-xlnx
+BUILD_KERNEL_VER=4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120-r0/linux-plnx_zynq7-standard-build
+export KERNELDIR=${PRJ_ROOT}/${BUILD_KERNEL_DIR}/${BUILD_KERNEL_VER}
+fi
+
 export INSTALL_MOD_PATH=${HOME}/targetfs-${BOARD}
 export PATH=${TOOLCHAIN_PATH}:${PATH}
 export PS1="\[\e[32;1m\][${BOARD}]\[\e[0m\]:\w> "

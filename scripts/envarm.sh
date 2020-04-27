@@ -1,6 +1,7 @@
 
 PWD=`pwd`
-PRJ_ROOT=${PWD}/$1/project
+#PRJ_ROOT=${PWD}/$1/project
+PRJ_ROOT=$1
 
 source /opt/xilinx/sdk/settings64.sh
 
@@ -24,17 +25,10 @@ export PATH=${TOOLCHAIN_PATH}:${PATH}
 export CROSS_COMPILE=${TARGET_SYS}-
 export ARCH=arm
 
-if [[ ${PETALINUX_VER} = "2017.4" ]]
-then
-BUILD_KERNEL_DIR=build/tmp/work/plnx_arm-xilinx-linux-gnueabi/linux-xlnx
-BUILD_KERNEL_VER=4.9-xilinx-v2017.4+gitAUTOINC+b450e900fd-r0/linux-plnx_arm-standard-build
-export KERNELDIR=${PRJ_ROOT}/${BUILD_KERNEL_DIR}/${BUILD_KERNEL_VER}
-fi
-
-if [[ ${PETALINUX_VER} = "2018.2" ]]
+if [[ ${PETALINUX_VER} = "2018.3" ]]
 then
 BUILD_KERNEL_DIR=build/tmp/work/plnx_zynq7-xilinx-linux-gnueabi/linux-xlnx
-BUILD_KERNEL_VER=4.14-xilinx-v2018.2+gitAUTOINC+ad4cd988ba-r0/linux-plnx_zynq7-standard-build
+BUILD_KERNEL_VER=4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120-r0/linux-plnx_zynq7-standard-build
 export KERNELDIR=${PRJ_ROOT}/${BUILD_KERNEL_DIR}/${BUILD_KERNEL_VER}
 fi
 
