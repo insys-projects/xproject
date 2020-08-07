@@ -9,17 +9,4 @@
 # /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
 #
 
-/home/karak/qnxshared *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/home/karak/bardy *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/home/karak/targetfs-bf32 *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/home/karak/targetfs-bfk *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/home/karak/targetfs-fmc130e *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/home/karak/targetfs-fm403c *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/home/karak/targetfs-swh101v *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-
 /tftpboot/nfsroot-fmc130e *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/tftpboot/nfsroot-zcu102 *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/tftpboot/nfsroot-fmc130e-ad9371 *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/tftpboot/nfsroot-ad9361 *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/tftpboot/nfsroot-ad9371 *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)
-/tftpboot/nfsroot-fm403c *(rw,nohide,insecure,no_subtree_check,async,no_root_squash)

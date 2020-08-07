@@ -1,4 +1,9 @@
 
+#
+# Specify path to petalinux project directory:
+# source ./envarm.sh /home/user/xproject/axidma/project
+#
+
 PWD=`pwd`
 #PRJ_ROOT=${PWD}/$1/project
 PRJ_ROOT=$1
