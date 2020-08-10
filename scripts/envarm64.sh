@@ -3,7 +3,7 @@ PWD=`pwd`
 #PRJ_ROOT=${PWD}/$1/project
 PRJ_ROOT=$1
 
-#source /opt/xilinx/sdk/settings64.sh
+source /opt/xilinx/sdk/settings64.sh
 source /opt/xilinx/petalinux/settings.sh
 
 export INSYS_BOARD=fmc138m
