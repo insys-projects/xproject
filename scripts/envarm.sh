@@ -47,7 +47,7 @@ fi
 if [[ ${PETALINUX_VER} = "" ]]
 then
     echo "PETALINUX environment not set! Please, do: source /opt/xilinx/petalinux/settings.sh"
-    return -1;
+#    return -1;
 fi
 
 if [ ! -d ${KERNELDIR} ];

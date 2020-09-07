@@ -1,5 +1,5 @@
-/* /include/ "zdev.dtsi" */
-/include/ "axidev.dtsi"
+/include/ "zdev.dtsi"
+/* /include/ "axidev.dtsi" */
 
 / {
         model = "fmc130e";

@@ -39,6 +39,8 @@ echo ====================================================
 echo Extract custom device tree and u-boot files
 echo ====================================================
 
+#tar -xzvf ../../common/recipes-bsp-fmc133v-v10.tgz -C ./project-spec/meta-user/
+#tar -xzvf ../../common/recipes-bsp-fmc133v-v11.tgz -C ./project-spec/meta-user/
 tar -xzvf ../../common/recipes-bsp-fmc138m.tgz -C ./project-spec/meta-user/
 
 exit 0
